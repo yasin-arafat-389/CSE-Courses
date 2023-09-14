@@ -1,0 +1,65 @@
+[
+  {
+    "image": "https://i.ibb.co/X298LMV/intro-To-CSE.png",
+    "courseName": "Intro to Computer Science",
+    "shortDescription": "This comprehensive course introduces you to the foundational concepts of computer science and programming knowledge.",
+    "price": 49.99,
+    "creditHours": 3
+  },
+  {
+    "image": "https://i.ibb.co/pxMz9KC/DSA.jpg",
+    "courseName": "Data Structures and Algorithms",
+    "shortDescription": "Explore data structures and algorithms in this in-depth course. Master the art of designing efficient algorithms and data structures. ",
+    "price": 79.99,
+    "creditHours": 4
+  },
+  {
+    "image": "https://i.ibb.co/VMmJtx8/maxresdefault.jpg",
+    "courseName": "Web Development Basics",
+    "shortDescription": "Embark on a journey into web development with HTML, CSS, and JavaScript. Create stunning websites and interactive web applications. ",
+    "price": 59.99,
+    "creditHours": 3
+  },
+  {
+    "image": "https://i.ibb.co/QbKRccQ/shutterstock-714415102.png",
+    "courseName": "Machine Learning Basics",
+    "shortDescription": "Dive into the world of machine learning and its applications. Understand the fundamentals of algorithms that helps us.",
+    "price": 89.99,
+    "creditHours": 4
+  },
+  {
+    "image": "https://i.ibb.co/3BKqxy6/database-management-system-3.webp",
+    "courseName": "Database Management Systems",
+    "shortDescription": "Discover the art of designing, implementing, and managing relational databases. Gain hands-on experience in SQL database.",
+    "price": 69.99,
+    "creditHours": 3
+  },
+  {
+    "image": "https://i.ibb.co/KLHMvx1/networking.png",
+    "courseName": "Computer Networks",
+    "shortDescription": "Delve into the fascinating world of computer networks. Learn about network protocols, architectures, and the technologies.",
+    "price": 79.99,
+    "creditHours": 4
+  },
+  {
+    "image": "https://i.ibb.co/0mk5mDQ/Artificial-Intelligence-Featured-Image.png",
+    "courseName": "Artificial Intelligence",
+    "shortDescription": "Uncover the magic of Artificial Intelligence. Explore AI techniques, from machine learning to natural language processing models.",
+    "price": 99.99,
+    "creditHours": 4
+  },
+  {
+    "image": "https://i.ibb.co/BjH61F6/how-to-become-a-software-engineer.png",
+    "courseName": "Software Engineering Principles",
+    "shortDescription": "Learn the art and science of software engineering. Master methodologies, and tools for developing high-quality software.",
+    "price": 69.99,
+    "creditHours": 3
+  },
+  {
+    "image": "https://i.ibb.co/bXjQ1X8/Free-Industrial-Control-System-ICS-Cyber-Security-Training-Course-scaled.webp",
+    "courseName": "Cybersecurity Fundamentals",
+    "shortDescription": "Protect the digital world. Dive into the basics of cybersecurity and ethical hacking. Learn to secure systems and devices.",
+    "price": 79.99,
+    "creditHours": 3
+  }
+]
