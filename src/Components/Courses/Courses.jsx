@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { BsBook } from "react-icons/bs";
 import Cart from "../Cart/Cart";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Courses = () => {
   let [course, getCourse] = useState([]);
   let [selectedCourses, setSelectedCourses] = useState([]);
+  let [remainingCredit, setRemainingCredit] = useState(20);
 
   useEffect(() => {
     fetch("Data.json")
@@ -14,7 +17,24 @@ const Courses = () => {
   }, []);
 
   let handleAddToCart = (course) => {
-    setSelectedCourses([...selectedCourses, course]);
+    let isExists = selectedCourses.find(
+      (selected) => selected.id === course.id
+    );
+
+    if (isExists) {
+      toast.warn(`${course.courseName} is already added`, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      setSelectedCourses([...selectedCourses, course]);
+    }
   };
 
   return (
@@ -57,6 +77,7 @@ const Courses = () => {
                   >
                     Select
                   </button>
+                  <ToastContainer />
                 </div>
               </div>
             </div>
