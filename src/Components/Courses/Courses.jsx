@@ -9,6 +9,8 @@ const Courses = () => {
   let [course, getCourse] = useState([]);
   let [selectedCourses, setSelectedCourses] = useState([]);
   let [remainingCredit, setRemainingCredit] = useState(20);
+  let [totalCredit, setTotalCredit] = useState(0);
+  let [totalprice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     fetch("Data.json")
@@ -33,6 +35,34 @@ const Courses = () => {
         theme: "light",
       });
     } else {
+      let credit = course.creditHours;
+      selectedCourses.forEach((item) => {
+        credit += item.creditHours;
+      });
+
+      if (credit > 20) {
+        return toast.error(`Not enough credits left`, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+      setRemainingCredit(20 - credit);
+
+      let price = course.price;
+      selectedCourses.forEach((item) => {
+        price += item.price;
+      });
+
+      setTotalCredit(credit);
+
+      setTotalPrice(price);
+
       setSelectedCourses([...selectedCourses, course]);
     }
   };
@@ -84,7 +114,12 @@ const Courses = () => {
           ))}
         </div>
 
-        <Cart selectedCourses={selectedCourses} />
+        <Cart
+          selectedCourses={selectedCourses}
+          remainingCredit={remainingCredit}
+          setTotalCredit={totalCredit}
+          setTotalPrice={totalprice}
+        />
       </div>
     </>
   );

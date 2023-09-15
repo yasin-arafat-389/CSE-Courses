@@ -1,11 +1,16 @@
 import React from "react";
 
-const Cart = ({ selectedCourses }) => {
+const Cart = ({
+  selectedCourses,
+  remainingCredit,
+  setTotalCredit,
+  setTotalPrice,
+}) => {
   return (
     <>
       <div className=" w-1/4 h-1/2  bg-[#fff] rounded-xl ">
         <h1 className=" text-[11px] md:text-[18px] lg:text-[18px] font-bold text-[#2F80ED] text-center mt-4 ">
-          Credit Hour Remaining 7 hr
+          Credit Hour Remaining {remainingCredit} hr
         </h1>
         <div className="divider w-[80%] mx-auto"></div>
         <h1 className="text-[11px] md:text-[20px] lg:text-[20px] font-bold w-[80%] mx-auto ">
@@ -28,11 +33,11 @@ const Cart = ({ selectedCourses }) => {
 
         <div className="divider w-[80%] mx-auto"></div>
         <h1 className="text-[11px] md:text-[14px] lg:text-[16px] font-medium text-[#1c1b1bcc] w-[80%] mx-auto ">
-          Total Credit Hour : 13
+          Total Credit Hour : {setTotalCredit}
         </h1>
         <div className="divider w-[80%] mx-auto my-2"></div>
         <h1 className="text-[11px] md:text-[14px] lg:text-[16px] font-medium text-[#1c1b1bcc] w-[80%] mx-auto mb-4  ">
-          Total Price : 48000 USD
+          Total Price : {setTotalPrice} USD
         </h1>
       </div>
     </>
