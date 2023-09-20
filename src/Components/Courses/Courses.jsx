@@ -4,6 +4,7 @@ import { BsBook } from "react-icons/bs";
 import Cart from "../Cart/Cart";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import swal from "sweetalert";
 
 const Courses = () => {
   let [course, getCourse] = useState([]);
@@ -59,11 +60,51 @@ const Courses = () => {
         price += item.price;
       });
 
-      setTotalCredit(credit);
-
       setTotalPrice(price);
 
+      setTotalCredit(credit);
+
       setSelectedCourses([...selectedCourses, course]);
+    }
+  };
+
+  // Remove course from cart
+  let handleRemoveCourse = (course) => {
+    let courseToRemove = selectedCourses.find(
+      (selected) => selected.id === course.id
+    );
+
+    if (courseToRemove) {
+      swal({
+        title: `Are you sure you want to remove ${courseToRemove.courseName}?`,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          let remainingCourses = selectedCourses.filter(
+            (selected) => selected.id != courseToRemove.id
+          );
+
+          setSelectedCourses(remainingCourses);
+
+          // Set total credits
+          let totalCreditSelected = 0;
+          let remCredit = course.creditHours;
+          selectedCourses.forEach((item) => {
+            totalCreditSelected += item.creditHours;
+          });
+          let totalCreditAfterRemove = totalCreditSelected - remCredit;
+
+          setTotalCredit(totalCreditAfterRemove);
+
+          setRemainingCredit(20 - totalCreditAfterRemove);
+
+          swal(`${courseToRemove.courseName} has been deleted!`, {
+            icon: "success",
+          });
+        }
+      });
     }
   };
 
@@ -72,10 +113,10 @@ const Courses = () => {
       <div className="flex w-[90%] mx-auto gap-5">
         <div className=" w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20 ">
           {course.map((item, index) => (
-            <div className="card bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl justify-between">
               <figure>
                 <img
-                  className=" w-auto  h-[200px] p-3 rounded-[20px]  "
+                  className="h-[200px] p-3 rounded-[20px]  "
                   src={item.image}
                 />
               </figure>
@@ -100,15 +141,15 @@ const Courses = () => {
                     </p>
                   </div>
                 </div>
-                <div className="w-full flex justify-center ">
-                  <button
-                    className="btn w-[90%]  my-4 bg-[#2F80ED] hover:bg-[#2F80ED] text-[#fff] "
-                    onClick={() => handleAddToCart(item)}
-                  >
-                    Select
-                  </button>
-                  <ToastContainer />
-                </div>
+              </div>
+              <div className="w-full flex justify-center ">
+                <button
+                  className="btn rounded-lg w-[90%]  my-4 bg-[#2F80ED] hover:bg-[#2F80ED] text-[#fff] "
+                  onClick={() => handleAddToCart(item)}
+                >
+                  Select
+                </button>
+                <ToastContainer />
               </div>
             </div>
           ))}
@@ -119,6 +160,7 @@ const Courses = () => {
           remainingCredit={remainingCredit}
           setTotalCredit={totalCredit}
           setTotalPrice={totalprice}
+          handleRemoveCourse={handleRemoveCourse}
         />
       </div>
     </>

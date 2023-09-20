@@ -1,10 +1,12 @@
 import React from "react";
+import { TiDelete } from "react-icons/ti";
 
 const Cart = ({
   selectedCourses,
   remainingCredit,
   setTotalCredit,
   setTotalPrice,
+  handleRemoveCourse,
 }) => {
   return (
     <>
@@ -19,10 +21,23 @@ const Cart = ({
 
         {selectedCourses.length > 0 ? (
           selectedCourses.map((item, index) => (
-            <div key={index}>
+            <div
+              key={index}
+              className="card w-[90%] flex flex-row m-auto bg-base-100 shadow-xl mb-3"
+            >
               <p className="text-[#1c1b1bcc] w-[80%] mx-auto my-2 text-[11px] md:text-[14px] lg:text-[18px] ">
                 {index + 1}. {item.courseName}
               </p>
+
+              <TiDelete
+                fontSize={"25px"}
+                style={{
+                  cursor: "pointer",
+                  marginTop: "10px",
+                  marginRight: "10px",
+                }}
+                onClick={() => handleRemoveCourse(item)}
+              />
             </div>
           ))
         ) : (
