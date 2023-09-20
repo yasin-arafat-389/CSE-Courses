@@ -100,6 +100,16 @@ const Courses = () => {
 
           setRemainingCredit(20 - totalCreditAfterRemove);
 
+          let totalPrice = 0;
+          let price = course.price;
+          selectedCourses.forEach((item) => {
+            totalPrice += item.price;
+          });
+
+          let priceAfterRemovingCourse = totalPrice - price;
+
+          setTotalPrice(priceAfterRemovingCourse);
+
           swal(`${courseToRemove.courseName} has been deleted!`, {
             icon: "success",
           });
