@@ -10,6 +10,10 @@ This project is a simple course registration website where you can buy your pref
 - Displays total price and remaining credits
 - Displays total credits added
 
+# Technologies used
+
+- React (state management, hooks)
+
 # State Management in this Project
 
 I will discuss here how state is managed in this project. In this project, state is primarily managed using React hooks, specifically the `useState` hook. State is used to keep track of selected courses, remaining credits, total credits, and total prices.
