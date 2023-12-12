@@ -9,6 +9,7 @@ This project is a simple course registration website where you can buy your pref
 - Validates if a course is already added to the sidebar.
 - Displays total price and remaining credits
 - Displays total credits added
+- Can delete a course from sidebar
 
 # Technologies used
 
